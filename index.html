@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #000;
+            background-color: #f5f2e6;
+        }
+
+        #question {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                color: #fff;
+                background-color: #000;
+            }
+
+            .button {
+                border-color: #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="question">Vai mandar fota do popô/teta pro Joaquim?🤩</div>
+    <div id="buttons">
+        <div class="button" id="yesButton">Sim😍</div>
+        <div class="button" id="noButton">Não💔</div>
+    </div>
+
+    <audio id="sound" src="f.mp3"></audio>
+
+    <script>
+        // Redireciona para a página lol.html quando o botão "Sim" é clicado
+        document.getElementById('yesButton').addEventListener('click', function() {
+            window.location.href = 'lol.html';
+        });
+
+        // Move a posição do botão "Não" para uma posição aleatória na tela quando é clicado
+        document.getElementById('noButton').addEventListener('click', function() {
+            var button = document.getElementById('noButton');
+            var screenWidth = window.innerWidth;
+            var screenHeight = window.innerHeight;
+            var randomX = Math.floor(Math.random() * (screenWidth - button.offsetWidth));
+            var randomY = Math.floor(Math.random() * (screenHeight - button.offsetHeight));
+            button.style.position = 'absolute';
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+
+            // Reproduz o som ao clicar no botão "Não"
+            var audio = document.getElementById('sound');
+            audio.play();
+        });
+    </script>
+</body>
+</html>
